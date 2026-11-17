@@ -1,0 +1,687 @@
+media:
+  input: assets/img
+  output: assets/img
+  extensions: [svg, png, jpg, jpeg, webp, avif, gif]
+
+content:
+  # ---------------------------------------------------------------------------
+  # 1. Global Site Settings, Hero, Section Headings, Contact & Footer
+  # ---------------------------------------------------------------------------
+  - name: site
+    label: Site Settings & Layout
+    type: file
+    path: data/site.json
+    format: json
+    fields:
+      - name: brand
+        label: Brand
+        type: object
+        fields:
+          - name: name
+            label: Brand Name
+            type: string
+            required: true
+          - name: short
+            label: Short Name
+            type: string
+          - name: tagline
+            label: Tagline
+            type: string
+          - name: logo
+            label: Logo
+            type: image
+
+      - name: meta
+        label: SEO & Metadata
+        type: object
+        fields:
+          - name: title
+            label: Page Title
+            type: string
+            required: true
+          - name: description
+            label: Meta Description
+            type: text
+
+      - name: nav
+        label: Navigation Links
+        type: object
+        list: true
+        fields:
+          - name: label
+            label: Label
+            type: string
+            required: true
+          - name: href
+            label: Link / Anchor (href)
+            type: string
+            required: true
+
+      - name: navCta
+        label: Navbar CTA Button
+        type: object
+        fields:
+          - name: label
+            label: Label
+            type: string
+          - name: href
+            label: Link / Anchor (href)
+            type: string
+
+      - name: hero
+        label: Hero Section
+        type: object
+        fields:
+          - name: eyebrow
+            label: Eyebrow Text
+            type: string
+          - name: titleBefore
+            label: Title (Before Highlight)
+            type: string
+          - name: titleHighlight
+            label: Title (Highlighted in Lime)
+            type: string
+          - name: titleAfter
+            label: Title (After Highlight)
+            type: string
+          - name: subtitle
+            label: Subtitle
+            type: text
+          - name: primaryCta
+            label: Primary CTA
+            type: object
+            fields:
+              - name: label
+                label: Label
+                type: string
+              - name: href
+                label: Link / Anchor (href)
+                type: string
+          - name: secondaryCta
+            label: Secondary CTA
+            type: object
+            fields:
+              - name: label
+                label: Label
+                type: string
+              - name: href
+                label: Link / Anchor (href)
+                type: string
+          - name: badges
+            label: Hero Badges
+            type: string
+            list: true
+          - name: panel
+            label: Dashboard Preview Panel
+            type: object
+            fields:
+              - name: title
+                label: Panel Title
+                type: string
+              - name: status
+                label: Status Text
+                type: string
+              - name: metrics
+                label: Metrics
+                type: object
+                list: true
+                fields:
+                  - name: label
+                    label: Metric Label
+                    type: string
+                  - name: value
+                    label: Metric Value
+                    type: string
+                  - name: delta
+                    label: Delta / Change
+                    type: string
+              - name: bars
+                label: Chart Bar Heights (%)
+                type: number
+                list: true
+              - name: pipeline
+                label: Pipeline Checklist
+                type: object
+                list: true
+                fields:
+                  - name: label
+                    label: Step Label
+                    type: string
+                  - name: done
+                    label: Completed
+                    type: boolean
+              - name: chips
+                label: Floating Chips
+                type: object
+                list: true
+                fields:
+                  - name: icon
+                    label: Icon
+                    type: select
+                    options:
+                      values: [code, layout, pen, cloud, sparkles, shield, rocket, search, life-buoy, target, users, check, x, arrow-right, arrow-up-right, plus, star, mail, phone, map-pin, clock, message, menu, linkedin, github, facebook, external]
+                  - name: text
+                    label: Chip Text
+                    type: string
+
+      - name: sections
+        label: Section Headings
+        type: object
+        fields:
+          - name: tech
+            label: Tech Marquee Section
+            type: object
+            fields:
+              - name: label
+                label: Heading Label
+                type: string
+          - name: services
+            label: Services Section
+            type: object
+            fields:
+              - name: eyebrow
+                label: Eyebrow
+                type: string
+              - name: title
+                label: Title
+                type: string
+              - name: subtitle
+                label: Subtitle
+                type: text
+          - name: stats
+            label: Stats Section
+            type: object
+            fields:
+              - name: eyebrow
+                label: Eyebrow
+                type: string
+              - name: title
+                label: Title
+                type: string
+          - name: work
+            label: Work / Portfolio Section
+            type: object
+            fields:
+              - name: eyebrow
+                label: Eyebrow
+                type: string
+              - name: title
+                label: Title
+                type: string
+              - name: subtitle
+                label: Subtitle
+                type: text
+          - name: process
+            label: Process Section
+            type: object
+            fields:
+              - name: eyebrow
+                label: Eyebrow
+                type: string
+              - name: title
+                label: Title
+                type: string
+              - name: subtitle
+                label: Subtitle
+                type: text
+          - name: why
+            label: Why IP3 Section
+            type: object
+            fields:
+              - name: eyebrow
+                label: Eyebrow
+                type: string
+              - name: title
+                label: Title
+                type: string
+              - name: subtitle
+                label: Subtitle
+                type: text
+          - name: engagement
+            label: Engagement Models Section
+            type: object
+            fields:
+              - name: eyebrow
+                label: Eyebrow
+                type: string
+              - name: title
+                label: Title
+                type: string
+              - name: subtitle
+                label: Subtitle
+                type: text
+          - name: testimonials
+            label: Testimonials Section
+            type: object
+            fields:
+              - name: eyebrow
+                label: Eyebrow
+                type: string
+              - name: title
+                label: Title
+                type: string
+          - name: faq
+            label: FAQ Section
+            type: object
+            fields:
+              - name: eyebrow
+                label: Eyebrow
+                type: string
+              - name: title
+                label: Title
+                type: string
+          - name: contact
+            label: Contact Section
+            type: object
+            fields:
+              - name: eyebrow
+                label: Eyebrow
+                type: string
+              - name: title
+                label: Title
+                type: string
+              - name: subtitle
+                label: Subtitle
+                type: text
+
+      - name: form
+        label: Contact Form Options
+        type: object
+        fields:
+          - name: budgets
+            label: Budget Options
+            type: string
+            list: true
+          - name: services
+            label: Service Options
+            type: string
+            list: true
+          - name: mailTo
+            label: Recipient Email (mailTo)
+            type: string
+          - name: subjectPrefix
+            label: Email Subject Prefix
+            type: string
+
+      - name: contact
+        label: Contact Details
+        type: object
+        fields:
+          - name: email
+            label: Email Address
+            type: string
+          - name: phone
+            label: Phone Number
+            type: string
+          - name: whatsapp
+            label: WhatsApp Link
+            type: string
+          - name: address
+            label: Address / Location
+            type: string
+          - name: hours
+            label: Business Hours
+            type: string
+
+      - name: socials
+        label: Social Media Links
+        type: object
+        list: true
+        fields:
+          - name: label
+            label: Platform Name
+            type: string
+          - name: icon
+            label: Icon
+            type: select
+            options:
+              values: [linkedin, github, facebook, message, mail, phone, external]
+          - name: href
+            label: Profile URL
+            type: string
+
+      - name: footer
+        label: Footer
+        type: object
+        fields:
+          - name: about
+            label: About Blurb
+            type: text
+          - name: columns
+            label: Footer Link Columns
+            type: object
+            list: true
+            fields:
+              - name: title
+                label: Column Title
+                type: string
+              - name: links
+                label: Links
+                type: object
+                list: true
+                fields:
+                  - name: label
+                    label: Label
+                    type: string
+                  - name: href
+                    label: Link / Anchor (href)
+                    type: string
+          - name: legal
+            label: Legal Links
+            type: object
+            list: true
+            fields:
+              - name: label
+                label: Label
+                type: string
+              - name: href
+                label: Link / Anchor (href)
+                type: string
+
+  # ---------------------------------------------------------------------------
+  # 2. Services (data/services.json)
+  # ---------------------------------------------------------------------------
+  - name: services
+    label: Services
+    type: file
+    path: data/services.json
+    format: json
+    list: true
+    fields:
+      - name: id
+        label: Service ID / Slug
+        type: string
+        required: true
+      - name: icon
+        label: Icon
+        type: select
+        options:
+          values: [code, layout, pen, cloud, sparkles, shield, rocket, search, life-buoy, target, users]
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: description
+        label: Description
+        type: text
+      - name: features
+        label: Features List
+        type: string
+        list: true
+      - name: cta
+        label: CTA Text
+        type: string
+
+  # ---------------------------------------------------------------------------
+  # 3. Projects / Portfolio (data/projects.json)
+  # ---------------------------------------------------------------------------
+  - name: projects
+    label: Projects & Portfolio
+    type: file
+    path: data/projects.json
+    format: json
+    fields:
+      - name: categories
+        label: Filter Categories
+        description: Keep "All" as the first item so the default filter works properly.
+        type: string
+        list: true
+      - name: items
+        label: Project Items
+        type: object
+        list: true
+        fields:
+          - name: slug
+            label: Slug
+            type: string
+            required: true
+          - name: title
+            label: Project Title
+            type: string
+            required: true
+          - name: client
+            label: Client Name
+            type: string
+          - name: year
+            label: Year
+            type: string
+          - name: category
+            label: Category
+            type: string
+            required: true
+          - name: featured
+            label: Featured
+            type: boolean
+          - name: image
+            label: Project Image
+            type: image
+            options:
+              path: assets/img/projects
+          - name: description
+            label: Short Summary
+            type: text
+          - name: challenge
+            label: Challenge
+            type: text
+          - name: solution
+            label: Our Solution
+            type: text
+          - name: results
+            label: Key Results
+            type: string
+            list: true
+          - name: tags
+            label: Tech Stack Tags
+            type: string
+            list: true
+          - name: url
+            label: Live URL (optional)
+            type: string
+      - name: cta
+        label: Portfolio CTA Tile
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: string
+          - name: text
+            label: Description
+            type: text
+          - name: label
+            label: Button Label
+            type: string
+          - name: href
+            label: Button Link / Anchor (href)
+            type: string
+
+  # ---------------------------------------------------------------------------
+  # 4. Stats / Animated Counters (data/stats.json)
+  # ---------------------------------------------------------------------------
+  - name: stats
+    label: Stats & Counters
+    type: file
+    path: data/stats.json
+    format: json
+    list: true
+    fields:
+      - name: value
+        label: Numeric Value
+        type: number
+        required: true
+      - name: suffix
+        label: Suffix (e.g. +, %)
+        type: string
+      - name: label
+        label: Label
+        type: string
+        required: true
+      - name: text
+        label: Description
+        type: text
+
+  # ---------------------------------------------------------------------------
+  # 5. Process Steps (data/process.json)
+  # ---------------------------------------------------------------------------
+  - name: process
+    label: Process Steps
+    type: file
+    path: data/process.json
+    format: json
+    list: true
+    fields:
+      - name: step
+        label: Step Number (e.g. 01)
+        type: string
+        required: true
+      - name: icon
+        label: Icon
+        type: select
+        options:
+          values: [search, pen, code, rocket, life-buoy, layout, cloud, sparkles, shield, target, users]
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: text
+        label: Description
+        type: text
+      - name: duration
+        label: Duration (e.g. 1 – 2 weeks)
+        type: string
+
+  # ---------------------------------------------------------------------------
+  # 6. Why IP3 / Comparison Table (data/comparison.json)
+  # ---------------------------------------------------------------------------
+  - name: comparison
+    label: Why IP3 Comparison
+    type: file
+    path: data/comparison.json
+    format: json
+    fields:
+      - name: columns
+        label: Column Headers
+        type: string
+        list: true
+      - name: rows
+        label: Comparison Rows
+        type: object
+        list: true
+        fields:
+          - name: label
+            label: Criterion / Row Label
+            type: string
+            required: true
+          - name: values
+            label: Column Values (matching Column Headers order)
+            type: object
+            list: true
+            fields:
+              - name: ok
+                label: Positive Indicator (Checkmark)
+                type: boolean
+              - name: text
+                label: Description Text
+                type: string
+                required: true
+
+  # ---------------------------------------------------------------------------
+  # 7. Engagement Models (data/engagement.json)
+  # ---------------------------------------------------------------------------
+  - name: engagement
+    label: Engagement Models
+    type: file
+    path: data/engagement.json
+    format: json
+    list: true
+    fields:
+      - name: id
+        label: ID
+        type: string
+        required: true
+      - name: icon
+        label: Icon
+        type: select
+        options:
+          values: [target, users, life-buoy, code, layout, pen, cloud, sparkles, shield, rocket]
+      - name: name
+        label: Model Name
+        type: string
+        required: true
+      - name: price
+        label: Price / Billing Label
+        type: string
+      - name: caption
+        label: Caption
+        type: string
+      - name: highlight
+        label: Highlighted Plan (Lime Card)
+        type: boolean
+      - name: badge
+        label: Badge Text (optional, e.g. Most popular)
+        type: string
+      - name: features
+        label: Included Features
+        type: string
+        list: true
+      - name: cta
+        label: CTA Button Label
+        type: string
+
+  # ---------------------------------------------------------------------------
+  # 8. Testimonials (data/testimonials.json)
+  # ---------------------------------------------------------------------------
+  - name: testimonials
+    label: Testimonials
+    type: file
+    path: data/testimonials.json
+    format: json
+    list: true
+    fields:
+      - name: quote
+        label: Quote
+        type: text
+        required: true
+      - name: name
+        label: Client Name
+        type: string
+        required: true
+      - name: role
+        label: Role & Company
+        type: string
+      - name: rating
+        label: Star Rating (1–5)
+        type: number
+        options:
+          min: 1
+          max: 5
+
+  # ---------------------------------------------------------------------------
+  # 9. FAQ (data/faq.json)
+  # ---------------------------------------------------------------------------
+  - name: faq
+    label: FAQ
+    type: file
+    path: data/faq.json
+    format: json
+    list: true
+    fields:
+      - name: q
+        label: Question
+        type: string
+        required: true
+      - name: a
+        label: Answer
+        type: text
+        required: true
+
+  # ---------------------------------------------------------------------------
+  # 10. Technologies Marquee (data/tech.json)
+  # Root is a flat array of strings (["React", "Next.js", ...]); edited as JSON
+  # ---------------------------------------------------------------------------
+  - name: tech
+    label: Tech Stack Marquee
+    type: file
+    path: data/tech.json
+    format: code
+    options:
+      language: json
