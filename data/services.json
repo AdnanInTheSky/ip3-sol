@@ -1,0 +1,50 @@
+[
+  {
+    "id": "custom-software",
+    "icon": "code",
+    "title": "Custom Software Development",
+    "description": "Tailor-made platforms, SaaS products and internal tools engineered around how your business actually works — not the other way around.",
+    "features": ["SaaS & multi-tenant platforms", "CRM / ERP / back-office systems", "API & third-party integrations", "Legacy modernization"],
+    "cta": "Build your software"
+  },
+  {
+    "id": "web-mobile",
+    "icon": "layout",
+    "title": "Web & Mobile App Development",
+    "description": "Fast, accessible websites and cross-platform mobile apps that convert visitors, delight users and scale with demand.",
+    "features": ["Responsive web apps & portals", "iOS & Android (Flutter / React Native)", "E-commerce & marketplaces", "Progressive web apps"],
+    "cta": "Launch your app"
+  },
+  {
+    "id": "ui-ux",
+    "icon": "pen",
+    "title": "UI/UX & Brand Design",
+    "description": "Research-led interface design, design systems and brand identities that make complex products feel effortless.",
+    "features": ["User research & wireframes", "Interactive prototypes in Figma", "Design systems & style guides", "Logo & brand identity"],
+    "cta": "Design your product"
+  },
+  {
+    "id": "cloud-devops",
+    "icon": "cloud",
+    "title": "Cloud & DevOps",
+    "description": "Secure, observable and cost-efficient infrastructure with automated pipelines so you can ship confidently every week.",
+    "features": ["AWS / Azure / GCP architecture", "CI/CD & Docker / Kubernetes", "Monitoring & incident response", "Cloud migration & cost audits"],
+    "cta": "Modernize your stack"
+  },
+  {
+    "id": "ai-automation",
+    "icon": "sparkles",
+    "title": "AI & Business Automation",
+    "description": "Automate repetitive work with smart workflows, chat assistants and data pipelines that free your team to focus on growth.",
+    "features": ["AI chatbots & copilots", "Workflow & document automation", "Data pipelines & dashboards", "LLM integrations (OpenAI, Claude)"],
+    "cta": "Automate your business"
+  },
+  {
+    "id": "consulting-support",
+    "icon": "shield",
+    "title": "IT Consulting & Managed Support",
+    "description": "Technical audits, security reviews and ongoing maintenance from engineers who already know your codebase.",
+    "features": ["Architecture & code audits", "Security & performance reviews", "SLA-backed maintenance", "Fractional CTO advisory"],
+    "cta": "Talk to an expert"
+  }
+]

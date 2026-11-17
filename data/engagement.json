@@ -1,0 +1,33 @@
+[
+  {
+    "id": "project",
+    "icon": "target",
+    "name": "Fixed-scope project",
+    "price": "Custom quote",
+    "caption": "Best for MVPs, websites and well-defined builds",
+    "highlight": false,
+    "features": ["Clear scope, timeline & price", "Milestone-based payments", "Weekly progress demos", "30 days free post-launch support"],
+    "cta": "Get a quote"
+  },
+  {
+    "id": "dedicated",
+    "icon": "users",
+    "name": "Dedicated team",
+    "price": "Monthly",
+    "caption": "Best for growing products that need steady velocity",
+    "highlight": true,
+    "badge": "Most popular",
+    "features": ["Engineers, designer & QA on your product", "Scale the team up or down monthly", "Daily stand-ups & shared roadmap", "Direct access to your tech lead"],
+    "cta": "Build your team"
+  },
+  {
+    "id": "retainer",
+    "icon": "life-buoy",
+    "name": "Support & maintenance",
+    "price": "Retainer",
+    "caption": "Best for live products that must stay fast and secure",
+    "highlight": false,
+    "features": ["SLA-backed response times", "Monitoring, updates & backups", "Bug fixes and small improvements", "Quarterly security & performance review"],
+    "cta": "Talk to support"
+  }
+]

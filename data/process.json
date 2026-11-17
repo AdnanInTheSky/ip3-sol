@@ -1,0 +1,7 @@
+[
+  { "step": "01", "icon": "search", "title": "Discover", "text": "We dig into your goals, users and constraints, then agree on scope, timeline and a fixed quote.", "duration": "1 – 2 weeks" },
+  { "step": "02", "icon": "pen", "title": "Design", "text": "Wireframes and clickable prototypes let you see and test the product before a line of code is written.", "duration": "2 – 3 weeks" },
+  { "step": "03", "icon": "code", "title": "Build", "text": "Agile sprints with weekly demos, automated tests and transparent progress in a shared board.", "duration": "4 – 12 weeks" },
+  { "step": "04", "icon": "rocket", "title": "Launch", "text": "Security checks, performance tuning and a smooth, monitored release to production.", "duration": "1 week" },
+  { "step": "05", "icon": "life-buoy", "title": "Support", "text": "SLA-backed maintenance, monitoring and iteration so your product keeps getting better.", "duration": "Ongoing" }
+]

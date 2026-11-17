@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IP3 Solutions — Custom Software, Web & Mobile Apps, AI Automation</title>
+  <meta name="description" content="IP3 Solutions is an IT firm that designs, builds and supports custom software, web and mobile apps, cloud systems and AI automation." />
+  <meta name="theme-color" content="#07070a" />
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+
+  <!-- Fonts (Google Fonts CDN) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS v4 (browser CDN build) -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+      --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+      --color-lime: #cffe25;
+      --color-ink-950: #07070a;
+      --color-ink-900: #0d0d12;
+      --color-ink-800: #14141b;
+      --color-ink-700: #1d1d27;
+      --color-mute: #a1a1ad;
+    }
+  </style>
+
+  <!-- Custom CSS (animations, backgrounds) -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Icons + app (must load before Alpine starts) -->
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/app.js"></script>
+  <!-- Alpine.js (CDN) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
+</head>
+
+<body x-data="site()" class="bg-ink-950 font-sans text-white antialiased selection:bg-lime selection:text-black">
+
+  <!-- Loading -->
+  <div x-show="!ready && !error" class="fixed inset-0 grid place-items-center bg-ink-950">
+    <div class="size-10 animate-spin rounded-full border-2 border-white/10 border-t-lime"></div>
+  </div>
+
+  <!-- Error (e.g. opened via file:// where fetch() is blocked) -->
+  <div x-show="error" x-cloak class="fixed inset-0 grid place-items-center bg-ink-950 p-6">
+    <div class="max-w-lg rounded-2xl border border-white/10 bg-ink-900 p-8">
+      <h1 class="font-display text-2xl font-semibold">Couldn't load site data</h1>
+      <p class="mt-3 text-mute">The page reads its content from <code class="text-lime">/data/*.json</code>, which browsers block when a file is opened directly. Run a tiny local server instead:</p>
+      <pre class="mt-4 overflow-x-auto rounded-lg bg-black/60 p-4 text-sm text-lime">python3 -m http.server 8080
+# then open http://localhost:8080</pre>
+      <p class="mt-4 text-xs text-mute" x-text="error"></p>
+    </div>
+  </div>
+
+  <template x-if="ready">
+    <div>
+      <!-- ============================ NAV ============================ -->
+      <header class="fixed inset-x-0 top-0 z-50 transition-all duration-300"
+              :class="scrolled || menuOpen ? 'bg-ink-950/80 backdrop-blur-xl border-b border-white/10' : 'border-b border-transparent'">
+        <div class="mx-auto flex h-18 max-w-7xl items-center justify-between px-5 md:px-8">
+          <a href="#top" class="flex items-center gap-2.5" aria-label="IP3 Solutions home">
+            <img :src="d.site.brand.logo" alt="" class="size-9" />
+            <span class="font-display text-lg font-semibold tracking-tight whitespace-nowrap" x-text="d.site.brand.name"></span>
+          </a>
+          <nav class="hidden items-center gap-1 lg:flex" aria-label="Primary">
+            <template x-for="l in d.site.nav" :key="l.href">
+              <a :href="l.href" class="rounded-full px-4 py-2 text-sm text-white/70 transition hover:bg-white/5 hover:text-white" x-text="l.label"></a>
+            </template>
+          </nav>
+          <div class="flex items-center gap-2">
+            <a :href="d.site.navCta.href" class="btn-lime hidden sm:inline-flex">
+              <span x-text="d.site.navCta.label"></span>
+              <span x-html="icon('arrow-right','size-4')"></span>
+            </a>
+            <button class="grid size-10 place-items-center rounded-full border border-white/10 lg:hidden" @click="menuOpen=!menuOpen" :aria-expanded="menuOpen" aria-label="Toggle menu">
+              <span x-show="!menuOpen" x-html="icon('menu')"></span>
+              <span x-show="menuOpen" x-cloak x-html="icon('x')"></span>
+            </button>
+          </div>
+        </div>
+        <!-- mobile menu -->
+        <div x-show="menuOpen" x-cloak x-transition.opacity class="border-t border-white/10 bg-ink-950/95 lg:hidden">
+          <nav class="mx-auto flex max-w-7xl flex-col px-5 py-4">
+            <template x-for="l in d.site.nav" :key="l.href">
+              <a :href="l.href" @click="menuOpen=false" class="rounded-lg px-3 py-3 text-white/80 hover:bg-white/5" x-text="l.label"></a>
+            </template>
+            <a :href="d.site.navCta.href" @click="menuOpen=false" class="btn-lime mt-3 justify-center" x-text="d.site.navCta.label"></a>
+          </nav>
+        </div>
+      </header>
+
+      <main id="top">
+        <!-- ============================ HERO ============================ -->
+        <section class="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
+          <div class="bg-grid pointer-events-none absolute inset-0"></div>
+          <div class="glow pointer-events-none absolute -top-40 left-1/2 size-[720px] -translate-x-1/2 rounded-full"></div>
+
+          <div class="relative mx-auto grid max-w-7xl items-center gap-14 px-5 md:px-8 lg:grid-cols-[1.05fr_1fr]">
+            <div>
+              <p x-reveal class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 py-1.5 pr-4 pl-2 text-sm text-white/80">
+                <span class="grid size-5 place-items-center rounded-full bg-lime"><span class="size-1.5 animate-pulse rounded-full bg-black"></span></span>
+                <span x-text="d.site.hero.eyebrow"></span>
+              </p>
+              <h1 x-reveal="80" class="mt-6 font-display text-[2.6rem] leading-[1.04] font-semibold tracking-tight sm:text-6xl">
+                <span x-text="d.site.hero.titleBefore"></span>
+                <span class="text-lime" x-text="d.site.hero.titleHighlight"></span>
+                <span x-text="d.site.hero.titleAfter"></span>
+              </h1>
+              <p x-reveal="160" class="mt-6 max-w-xl text-lg leading-relaxed text-mute" x-text="d.site.hero.subtitle"></p>
+              <div x-reveal="240" class="mt-9 flex flex-wrap items-center gap-3">
+                <a :href="d.site.hero.primaryCta.href" class="btn-lime btn-lg">
+                  <span x-text="d.site.hero.primaryCta.label"></span>
+                  <span x-html="icon('arrow-right','size-5')"></span>
+                </a>
+                <a :href="d.site.hero.secondaryCta.href" class="btn-ghost btn-lg" x-text="d.site.hero.secondaryCta.label"></a>
+              </div>
+              <ul x-reveal="320" class="mt-9 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/70">
+                <template x-for="b in d.site.hero.badges" :key="b">
+                  <li class="flex items-center gap-2"><span class="text-lime" x-html="icon('check','size-4')"></span><span x-text="b"></span></li>
+                </template>
+              </ul>
+            </div>
+
+            <!-- dashboard panel -->
+            <div x-reveal="200" class="relative">
+              <div class="relative rounded-3xl border border-white/10 bg-ink-900/80 p-5 shadow-2xl shadow-lime/5 backdrop-blur md:p-6">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-1.5"><i class="size-2.5 rounded-full bg-white/20"></i><i class="size-2.5 rounded-full bg-white/20"></i><i class="size-2.5 rounded-full bg-white/20"></i></div>
+                  <span class="text-xs text-mute" x-text="d.site.hero.panel.title"></span>
+                  <span class="flex items-center gap-1.5 text-xs text-lime"><i class="size-1.5 animate-pulse rounded-full bg-lime"></i><span x-text="d.site.hero.panel.status" class="hidden sm:inline"></span></span>
+                </div>
+                <div class="mt-5 grid grid-cols-3 gap-3">
+                  <template x-for="m in d.site.hero.panel.metrics" :key="m.label">
+                    <div class="rounded-2xl border border-white/5 bg-ink-800 p-3.5">
+                      <p class="text-[11px] tracking-wide text-mute uppercase" x-text="m.label"></p>
+                      <p class="mt-1 font-display text-xl font-semibold md:text-2xl" x-text="m.value"></p>
+                      <p class="mt-0.5 text-xs text-lime" x-text="m.delta"></p>
+                    </div>
+                  </template>
+                </div>
+                <div class="mt-3 rounded-2xl border border-white/5 bg-ink-800 p-4">
+                  <div class="flex h-36 items-end gap-2">
+                    <template x-for="(h,i) in d.site.hero.panel.bars" :key="i">
+                      <div class="bar flex-1 rounded-t-md" :class="i===d.site.hero.panel.bars.length-1 ? 'bg-lime' : 'bg-white/15'" :style="`--h:${h}%; --i:${i}`"></div>
+                    </template>
+                  </div>
+                </div>
+                <ul class="mt-3 space-y-2">
+                  <template x-for="p in d.site.hero.panel.pipeline" :key="p.label">
+                    <li class="flex items-center gap-3 rounded-xl bg-ink-800 px-3.5 py-2.5 text-sm">
+                      <span class="grid size-5 place-items-center rounded-full" :class="p.done ? 'bg-lime text-black' : 'border border-dashed border-white/30 text-transparent'"><span x-html="icon('check','size-3')"></span></span>
+                      <span :class="p.done ? 'text-white' : 'text-mute'" x-text="p.label"></span>
+                      <span x-show="!p.done" class="ml-auto text-xs text-lime">In progress…</span>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+              <!-- floating chips -->
+              <div class="float absolute -top-5 -right-2 hidden items-center gap-2 rounded-full border border-white/10 bg-ink-800 py-2 pr-4 pl-2.5 text-sm shadow-xl sm:flex">
+                <span class="grid size-7 place-items-center rounded-full bg-lime text-black" x-html="icon('rocket','size-4')"></span><span x-text="d.site.hero.panel.chips[0].text"></span>
+              </div>
+              <div class="float absolute -bottom-5 -left-3 hidden items-center gap-2 rounded-full border border-white/10 bg-ink-800 py-2 pr-4 pl-2.5 text-sm shadow-xl [animation-delay:-3s] sm:flex">
+                <span class="grid size-7 place-items-center rounded-full bg-white text-black" x-html="icon('shield','size-4')"></span><span x-text="d.site.hero.panel.chips[1].text"></span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================ TECH MARQUEE ============================ -->
+        <section class="border-y border-white/10 bg-ink-900/60 py-8" aria-label="Technologies">
+          <p class="mb-5 text-center text-xs tracking-[0.2em] text-mute uppercase" x-text="d.site.sections.tech.label"></p>
+          <div class="marquee-mask overflow-hidden">
+            <div class="marquee flex w-max gap-3">
+              <template x-for="(t,i) in [...d.tech, ...d.tech]" :key="i">
+                <span class="flex items-center gap-2 rounded-full border border-white/10 bg-ink-800 px-5 py-2.5 text-sm whitespace-nowrap text-white/80">
+                  <i class="size-1.5 rounded-full bg-lime"></i><span x-text="t"></span>
+                </span>
+              </template>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================ SERVICES (WHAT WE OFFER) ============================ -->
+        <section id="services" class="scroll-mt-20 py-24 md:py-32">
+          <div class="mx-auto max-w-7xl px-5 md:px-8">
+            <div x-reveal class="max-w-3xl">
+              <span class="eyebrow" x-text="d.site.sections.services.eyebrow"></span>
+              <h2 class="h2 mt-4" x-text="d.site.sections.services.title"></h2>
+              <p class="mt-5 text-lg text-mute" x-text="d.site.sections.services.subtitle"></p>
+            </div>
+
+            <div class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              <template x-for="(s,i) in d.services" :key="s.id">
+                <article x-reveal="i*70" class="card group flex flex-col p-7">
+                  <div class="flex items-start justify-between">
+                    <span class="grid size-12 place-items-center rounded-2xl bg-lime/10 text-lime ring-1 ring-lime/20 transition group-hover:bg-lime group-hover:text-black" x-html="icon(s.icon,'size-6')"></span>
+                    <span class="font-display text-sm text-white/25" x-text="String(i+1).padStart(2,'0')"></span>
+                  </div>
+                  <h3 class="mt-6 font-display text-xl font-semibold" x-text="s.title"></h3>
+                  <p class="mt-3 text-[15px] leading-relaxed text-mute" x-text="s.description"></p>
+                  <ul class="mt-5 space-y-2.5 text-sm text-white/80">
+                    <template x-for="f in s.features" :key="f">
+                      <li class="flex gap-2.5"><span class="mt-0.5 text-lime" x-html="icon('check','size-4 shrink-0')"></span><span x-text="f"></span></li>
+                    </template>
+                  </ul>
+                  <a href="#contact" class="mt-7 inline-flex items-center gap-2 pt-1 text-sm font-medium text-lime">
+                    <span x-text="s.cta"></span>
+                    <span class="transition group-hover:translate-x-1" x-html="icon('arrow-right','size-4')"></span>
+                  </a>
+                </article>
+              </template>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================ STATS ============================ -->
+        <section class="bg-lime py-20 text-black">
+          <div class="mx-auto max-w-7xl px-5 md:px-8">
+            <div x-reveal class="flex flex-col justify-between gap-4 md:flex-row md:items-end">
+              <div>
+                <span class="text-sm font-medium tracking-[0.18em] uppercase opacity-60" x-text="d.site.sections.stats.eyebrow"></span>
+                <h2 class="mt-3 max-w-xl font-display text-3xl leading-tight font-semibold tracking-tight md:text-4xl" x-text="d.site.sections.stats.title"></h2>
+              </div>
+            </div>
+            <div class="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+              <template x-for="(s,i) in d.stats" :key="s.label">
+                <div x-reveal="i*80" x-data="counter(s.value)" class="border-t border-black/20 pt-5">
+                  <p class="font-display text-6xl font-semibold tracking-tight"><span x-text="n"></span><span x-text="s.suffix"></span></p>
+                  <p class="mt-2 font-medium" x-text="s.label"></p>
+                  <p class="mt-1 text-sm opacity-70" x-text="s.text"></p>
+                </div>
+              </template>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================ PREVIOUS WORK ============================ -->
+        <section id="work" class="scroll-mt-20 py-24 md:py-32">
+          <div class="mx-auto max-w-7xl px-5 md:px-8">
+            <div x-reveal class="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+              <div class="max-w-2xl">
+                <span class="eyebrow" x-text="d.site.sections.work.eyebrow"></span>
+                <h2 class="h2 mt-4" x-text="d.site.sections.work.title"></h2>
+              </div>
+              <p class="max-w-md text-mute" x-text="d.site.sections.work.subtitle"></p>
+            </div>
+
+            <!-- filters -->
+            <div x-reveal="80" class="mt-10 flex flex-wrap gap-2" role="tablist" aria-label="Filter projects">
+              <template x-for="c in d.projects.categories" :key="c">
+                <button role="tab" :aria-selected="filter===c" @click="filter=c"
+                        class="flex items-center gap-2 rounded-full border px-4 py-2 text-sm transition"
+                        :class="filter===c ? 'border-lime bg-lime text-black' : 'border-white/10 text-white/70 hover:border-white/30 hover:text-white'">
+                  <span x-text="c"></span>
+                  <span class="rounded-full px-1.5 text-xs" :class="filter===c ? 'bg-black/15' : 'bg-white/10'" x-text="countIn(c)"></span>
+                </button>
+              </template>
+            </div>
+
+            <!-- grid -->
+            <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <template x-for="(p,i) in filtered" :key="p.slug">
+                <article x-reveal="(i%3)*70" class="work-card group cursor-pointer" tabindex="0" role="button" :aria-label="'Open '+p.title"
+                         @click="openProject(p)" @keydown.enter="openProject(p)">
+                  <div class="relative aspect-[3/2] overflow-hidden rounded-2xl border border-white/10 bg-ink-800">
+                    <img :src="p.image" :alt="p.title+' preview'" loading="lazy" class="size-full object-cover transition duration-700 group-hover:scale-105" />
+                    <span class="absolute top-3 left-3 rounded-full bg-black/60 px-3 py-1 text-xs backdrop-blur" x-text="p.category"></span>
+                    <span class="absolute right-3 bottom-3 grid size-11 translate-y-2 place-items-center rounded-full bg-lime text-black opacity-0 transition group-hover:translate-y-0 group-hover:opacity-100" x-html="icon('arrow-up-right','size-5')"></span>
+                  </div>
+                  <div class="mt-4 flex items-start justify-between gap-4">
+                    <div>
+                      <h3 class="font-display text-xl font-semibold transition group-hover:text-lime" x-text="p.title"></h3>
+                      <p class="mt-1.5 text-sm leading-relaxed text-mute" x-text="p.description"></p>
+                    </div>
+                    <span class="mt-1 text-sm text-white/40" x-text="p.year"></span>
+                  </div>
+                  <div class="mt-3 flex flex-wrap gap-1.5">
+                    <template x-for="t in p.tags" :key="t"><span class="rounded-md bg-white/5 px-2 py-1 text-xs text-white/60" x-text="t"></span></template>
+                  </div>
+                </article>
+              </template>
+              <!-- CTA tile (content from projects.json -> cta) -->
+              <a x-reveal="150" :href="d.projects.cta.href" class="group flex min-h-72 flex-col justify-between rounded-2xl border border-dashed border-lime/40 bg-lime/[0.04] p-8 transition hover:bg-lime hover:text-black">
+                <span class="grid size-12 place-items-center rounded-2xl bg-lime text-black" x-html="icon('plus','size-6')"></span>
+                <div>
+                  <h3 class="font-display text-2xl font-semibold" x-text="d.projects.cta.title"></h3>
+                  <p class="mt-2 text-sm text-mute transition group-hover:text-black/70" x-text="d.projects.cta.text"></p>
+                  <span class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-lime transition group-hover:text-black"><span x-text="d.projects.cta.label"></span><span x-html="icon('arrow-right','size-4')"></span></span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- project modal -->
+        <div x-show="active" x-cloak @keydown.escape.window="closeProject()"
+             x-transition.opacity.duration.200ms
+             class="fixed inset-0 z-[60] flex items-end justify-center bg-black/80 p-0 backdrop-blur-sm sm:items-center sm:p-6"
+             @click.self="closeProject()" role="dialog" aria-modal="true" aria-label="Project details">
+          <template x-if="active">
+            <div class="relative max-h-[92vh] w-full max-w-4xl overflow-y-auto rounded-t-3xl border border-white/10 bg-ink-900 sm:rounded-3xl">
+              <button @click="closeProject()" class="absolute top-4 right-4 z-10 grid size-10 place-items-center rounded-full bg-black/60 backdrop-blur hover:bg-lime hover:text-black" aria-label="Close" x-html="icon('x')"></button>
+              <img :src="active.image" :alt="active.title" class="aspect-[16/9] w-full object-cover" />
+              <div class="p-6 md:p-10">
+                <div class="flex flex-wrap items-center gap-3 text-sm">
+                  <span class="rounded-full bg-lime px-3 py-1 font-medium text-black" x-text="active.category"></span>
+                  <span class="text-mute" x-text="active.client + ' · ' + active.year"></span>
+                </div>
+                <h3 class="mt-4 font-display text-3xl font-semibold md:text-4xl" x-text="active.title"></h3>
+                <p class="mt-3 text-lg text-white/80" x-text="active.description"></p>
+                <div class="mt-8 grid gap-8 md:grid-cols-2">
+                  <div>
+                    <h4 class="text-xs tracking-[0.18em] text-lime uppercase">Challenge</h4>
+                    <p class="mt-2 text-mute" x-text="active.challenge"></p>
+                    <h4 class="mt-6 text-xs tracking-[0.18em] text-lime uppercase">Our solution</h4>
+                    <p class="mt-2 text-mute" x-text="active.solution"></p>
+                  </div>
+                  <div>
+                    <h4 class="text-xs tracking-[0.18em] text-lime uppercase">Results</h4>
+                    <ul class="mt-3 space-y-3">
+                      <template x-for="r in active.results" :key="r">
+                        <li class="flex gap-3"><span class="mt-0.5 text-lime" x-html="icon('check','size-5 shrink-0')"></span><span x-text="r"></span></li>
+                      </template>
+                    </ul>
+                  </div>
+                </div>
+                <div class="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-6">
+                  <div class="flex flex-wrap gap-1.5">
+                    <template x-for="t in active.tags" :key="t"><span class="rounded-md bg-white/5 px-2.5 py-1 text-xs text-white/70" x-text="t"></span></template>
+                  </div>
+                  <div class="flex gap-3">
+                    <a x-show="active.url" :href="active.url" target="_blank" rel="noopener" class="btn-ghost">Visit site <span x-html="icon('external','size-4')"></span></a>
+                    <a href="#contact" @click="closeProject()" class="btn-lime">Start a similar project</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+
+        <!-- ============================ PROCESS ============================ -->
+        <section id="process" class="scroll-mt-20 border-y border-white/10 bg-ink-900/60 py-24 md:py-32">
+          <div class="mx-auto max-w-7xl px-5 md:px-8">
+            <div x-reveal class="max-w-3xl">
+              <span class="eyebrow" x-text="d.site.sections.process.eyebrow"></span>
+              <h2 class="h2 mt-4" x-text="d.site.sections.process.title"></h2>
+              <p class="mt-5 text-lg text-mute" x-text="d.site.sections.process.subtitle"></p>
+            </div>
+            <ol class="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+              <template x-for="(s,i) in d.process" :key="s.step">
+                <li x-reveal="i*80" class="card relative p-6">
+                  <div class="flex items-center justify-between">
+                    <span class="font-display text-4xl font-semibold text-lime" x-text="s.step"></span>
+                    <span class="text-white/40" x-html="icon(s.icon,'size-6')"></span>
+                  </div>
+                  <h3 class="mt-5 font-display text-xl font-semibold" x-text="s.title"></h3>
+                  <p class="mt-2 text-sm leading-relaxed text-mute" x-text="s.text"></p>
+                  <p class="mt-5 inline-flex items-center gap-1.5 rounded-full bg-white/5 px-3 py-1 text-xs text-white/70"><span x-html="icon('clock','size-3.5')"></span><span x-text="s.duration"></span></p>
+                </li>
+              </template>
+            </ol>
+          </div>
+        </section>
+
+        <!-- ============================ WHY IP3 / COMPARISON ============================ -->
+        <section id="why" class="scroll-mt-20 py-24 md:py-32">
+          <div class="mx-auto max-w-7xl px-5 md:px-8">
+            <div x-reveal class="mx-auto max-w-2xl text-center">
+              <span class="eyebrow" x-text="d.site.sections.why.eyebrow"></span>
+              <h2 class="h2 mt-4" x-text="d.site.sections.why.title"></h2>
+              <p class="mt-5 text-lg text-mute" x-text="d.site.sections.why.subtitle"></p>
+            </div>
+            <div x-reveal="100" class="mt-14 overflow-x-auto rounded-3xl border border-white/10 bg-ink-900">
+              <table class="w-full min-w-[820px] border-collapse text-left">
+                <thead>
+                  <tr>
+                    <th class="p-5 text-sm font-normal text-mute">Overview</th>
+                    <template x-for="(c,ci) in d.comparison.columns" :key="c">
+                      <th class="p-5 font-display text-lg font-semibold" :class="ci===0 ? 'bg-lime text-black first-of-type:rounded-tl-none' : ''" x-text="c"></th>
+                    </template>
+                  </tr>
+                </thead>
+                <tbody>
+                  <template x-for="row in d.comparison.rows" :key="row.label">
+                    <tr class="border-t border-white/10">
+                      <th class="p-5 align-top text-sm font-medium text-white/90" x-text="row.label"></th>
+                      <template x-for="(v,vi) in row.values" :key="vi">
+                        <td class="p-5 align-top text-sm" :class="vi===0 ? 'bg-lime/[0.07]' : ''">
+                          <div class="flex gap-3">
+                            <span class="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full"
+                                  :class="v.ok ? 'bg-lime text-black' : 'bg-white/10 text-white/50'"
+                                  x-html="icon(v.ok ? 'check':'x','size-3')"></span>
+                            <span :class="vi===0 ? 'text-white' : 'text-mute'" x-text="v.text"></span>
+                          </div>
+                        </td>
+                      </template>
+                    </tr>
+                  </template>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================ ENGAGEMENT MODELS ============================ -->
+        <section id="engagement" class="scroll-mt-20 border-t border-white/10 bg-ink-900/60 py-24 md:py-32">
+          <div class="mx-auto max-w-7xl px-5 md:px-8">
+            <div x-reveal class="mx-auto max-w-2xl text-center">
+              <span class="eyebrow" x-text="d.site.sections.engagement.eyebrow"></span>
+              <h2 class="h2 mt-4" x-text="d.site.sections.engagement.title"></h2>
+              <p class="mt-5 text-lg text-mute" x-text="d.site.sections.engagement.subtitle"></p>
+            </div>
+            <div class="mt-14 grid items-stretch gap-5 lg:grid-cols-3">
+              <template x-for="(e,i) in d.engagement" :key="e.id">
+                <article x-reveal="i*90" class="relative flex flex-col rounded-3xl border p-8"
+                         :class="e.highlight ? 'border-lime bg-lime text-black' : 'border-white/10 bg-ink-800'">
+                  <span x-show="e.badge" class="absolute top-6 right-6 rounded-full bg-black px-3 py-1 text-xs font-medium text-lime" x-text="e.badge"></span>
+                  <span class="grid size-12 place-items-center rounded-2xl" :class="e.highlight ? 'bg-black text-lime' : 'bg-lime/10 text-lime ring-1 ring-lime/20'" x-html="icon(e.icon,'size-6')"></span>
+                  <h3 class="mt-6 font-display text-2xl font-semibold" x-text="e.name"></h3>
+                  <p class="mt-1 font-display text-lg" :class="e.highlight ? 'text-black/70' : 'text-lime'" x-text="e.price"></p>
+                  <p class="mt-3 text-sm" :class="e.highlight ? 'text-black/70' : 'text-mute'" x-text="e.caption"></p>
+                  <ul class="mt-6 flex-1 space-y-3 text-sm">
+                    <template x-for="f in e.features" :key="f">
+                      <li class="flex gap-3"><span class="mt-0.5" :class="e.highlight ? 'text-black' : 'text-lime'" x-html="icon('check','size-4 shrink-0')"></span><span x-text="f"></span></li>
+                    </template>
+                  </ul>
+                  <a href="#contact" class="mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold transition"
+                     :class="e.highlight ? 'bg-black text-white hover:bg-ink-700' : 'border border-white/15 hover:border-lime hover:text-lime'">
+                    <span x-text="e.cta"></span><span x-html="icon('arrow-right','size-4')"></span>
+                  </a>
+                </article>
+              </template>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================ TESTIMONIALS ============================ -->
+        <section class="py-24 md:py-32" @mouseenter="_paused=true" @mouseleave="_paused=false">
+          <div class="mx-auto max-w-5xl px-5 text-center md:px-8">
+            <div x-reveal>
+              <span class="eyebrow" x-text="d.site.sections.testimonials.eyebrow"></span>
+              <h2 class="h2 mt-4" x-text="d.site.sections.testimonials.title"></h2>
+            </div>
+            <div x-reveal="100" class="relative mt-14 min-h-[18rem] md:min-h-[15rem]">
+              <template x-for="(t,i) in d.testimonials" :key="i">
+                <figure x-show="testimonialIdx===i" x-cloak
+                        x-transition:enter="transition duration-500" x-transition:enter-start="opacity-0 translate-y-3" x-transition:enter-end="opacity-100 translate-y-0"
+                        class="absolute inset-x-0 top-0">
+                  <div class="flex justify-center gap-1 text-lime">
+                    <template x-for="s in t.rating"><span x-html="icon('star','size-5')"></span></template>
+                  </div>
+                  <blockquote class="mt-6 font-display text-2xl leading-snug font-medium tracking-tight md:text-3xl" x-text="'“'+t.quote+'”'"></blockquote>
+                  <figcaption class="mt-8 flex items-center justify-center gap-3">
+                    <span class="grid size-12 place-items-center rounded-full bg-lime font-display font-semibold text-black" x-text="initials(t.name)"></span>
+                    <span class="text-left"><span class="block font-medium" x-text="t.name"></span><span class="block text-sm text-mute" x-text="t.role"></span></span>
+                  </figcaption>
+                </figure>
+              </template>
+            </div>
+            <div class="mt-4 flex items-center justify-center gap-4">
+              <button @click="prevTestimonial()" class="grid size-11 place-items-center rounded-full border border-white/10 transition hover:border-lime hover:text-lime" aria-label="Previous testimonial"><span class="rotate-180" x-html="icon('arrow-right')"></span></button>
+              <div class="flex gap-2">
+                <template x-for="(t,i) in d.testimonials" :key="i">
+                  <button @click="testimonialIdx=i" class="h-2 rounded-full transition-all" :class="testimonialIdx===i ? 'w-8 bg-lime' : 'w-2 bg-white/20'" :aria-label="'Show testimonial '+(i+1)"></button>
+                </template>
+              </div>
+              <button @click="nextTestimonial()" class="grid size-11 place-items-center rounded-full border border-white/10 transition hover:border-lime hover:text-lime" aria-label="Next testimonial" x-html="icon('arrow-right')"></button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================ FAQ ============================ -->
+        <section id="faq" class="scroll-mt-20 border-t border-white/10 bg-ink-900/60 py-24 md:py-32">
+          <div class="mx-auto grid max-w-7xl gap-12 px-5 md:px-8 lg:grid-cols-[0.8fr_1.2fr]">
+            <div x-reveal>
+              <span class="eyebrow" x-text="d.site.sections.faq.eyebrow"></span>
+              <h2 class="h2 mt-4" x-text="d.site.sections.faq.title"></h2>
+              <p class="mt-5 text-mute">Can't find what you're looking for? <a href="#contact" class="text-lime underline underline-offset-4">Send us a message</a> and we'll get back within a day.</p>
+            </div>
+            <div class="space-y-3">
+              <template x-for="(f,i) in d.faq" :key="i">
+                <div x-reveal="i*50" class="rounded-2xl border bg-ink-800 transition" :class="openFaq===i ? 'border-lime/40' : 'border-white/10'">
+                  <button class="flex w-full items-center justify-between gap-4 p-5 text-left md:p-6" @click="openFaq = openFaq===i ? -1 : i" :aria-expanded="openFaq===i">
+                    <span class="font-display text-lg font-medium" x-text="f.q"></span>
+                    <span class="grid size-8 shrink-0 place-items-center rounded-full border border-white/15 transition" :class="openFaq===i ? 'rotate-45 border-lime bg-lime text-black' : ''" x-html="icon('plus','size-4')"></span>
+                  </button>
+                  <div class="acc" :class="openFaq===i && 'open'"><div><p class="px-5 pb-6 text-mute md:px-6" x-text="f.a"></p></div></div>
+                </div>
+              </template>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================ CONTACT ============================ -->
+        <section id="contact" class="relative scroll-mt-20 overflow-hidden py-24 md:py-32">
+          <div class="glow pointer-events-none absolute -right-60 -bottom-60 size-[640px] rounded-full opacity-60"></div>
+          <div class="relative mx-auto grid max-w-7xl gap-12 px-5 md:px-8 lg:grid-cols-[0.9fr_1.1fr]">
+            <div x-reveal>
+              <span class="eyebrow" x-text="d.site.sections.contact.eyebrow"></span>
+              <h2 class="h2 mt-4" x-text="d.site.sections.contact.title"></h2>
+              <p class="mt-5 max-w-md text-lg text-mute" x-text="d.site.sections.contact.subtitle"></p>
+              <ul class="mt-10 space-y-5">
+                <li class="flex items-center gap-4"><span class="grid size-12 place-items-center rounded-2xl bg-white/5 text-lime" x-html="icon('mail','size-5')"></span><a :href="'mailto:'+d.site.contact.email" class="hover:text-lime" x-text="d.site.contact.email"></a></li>
+                <li class="flex items-center gap-4"><span class="grid size-12 place-items-center rounded-2xl bg-white/5 text-lime" x-html="icon('phone','size-5')"></span><a :href="'tel:'+d.site.contact.phone.replace(/[^+\d]/g,'')" class="hover:text-lime" x-text="d.site.contact.phone"></a></li>
+                <li class="flex items-center gap-4"><span class="grid size-12 place-items-center rounded-2xl bg-white/5 text-lime" x-html="icon('map-pin','size-5')"></span><span x-text="d.site.contact.address"></span></li>
+                <li class="flex items-center gap-4"><span class="grid size-12 place-items-center rounded-2xl bg-white/5 text-lime" x-html="icon('clock','size-5')"></span><span x-text="d.site.contact.hours"></span></li>
+              </ul>
+              <a :href="d.site.contact.whatsapp" target="_blank" rel="noopener" class="btn-ghost mt-10"><span x-html="icon('message','size-4')"></span>Chat on WhatsApp</a>
+            </div>
+
+            <form x-reveal="120" @submit.prevent="submitForm()" class="rounded-3xl border border-white/10 bg-ink-900/90 p-6 backdrop-blur md:p-9">
+              <div class="grid gap-5 sm:grid-cols-2">
+                <label class="field"><span>Your name *</span><input required x-model="form.name" type="text" autocomplete="name" placeholder="Jane Cooper" /></label>
+                <label class="field"><span>Work email *</span><input required x-model="form.email" type="email" autocomplete="email" placeholder="jane@company.com" /></label>
+                <label class="field sm:col-span-2"><span>Company</span><input x-model="form.company" type="text" autocomplete="organization" placeholder="Company name (optional)" /></label>
+                <label class="field"><span>I'm interested in</span>
+                  <select x-model="form.service"><template x-for="s in d.site.form.services" :key="s"><option :value="s" x-text="s"></option></template></select></label>
+                <label class="field"><span>Budget</span>
+                  <select x-model="form.budget"><template x-for="b in d.site.form.budgets" :key="b"><option :value="b" x-text="b"></option></template></select></label>
+                <label class="field sm:col-span-2"><span>Project details *</span><textarea required x-model="form.message" rows="5" placeholder="Tell us about your goals, timeline and anything we should know…"></textarea></label>
+              </div>
+              <button type="submit" class="btn-lime btn-lg mt-7 w-full justify-center sm:w-auto"><span>Send message</span><span x-html="icon('arrow-right','size-5')"></span></button>
+              <p x-show="sent" x-cloak class="mt-4 text-sm text-lime">Thanks! Your email app should open with the message ready to send.</p>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <!-- ============================ FOOTER ============================ -->
+      <footer class="border-t border-white/10 bg-ink-900/60">
+        <div class="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:px-8 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+          <div>
+            <a href="#top" class="flex items-center gap-2.5"><img :src="d.site.brand.logo" alt="" class="size-9" /><span class="font-display text-lg font-semibold" x-text="d.site.brand.name"></span></a>
+            <p class="mt-4 max-w-xs text-sm leading-relaxed text-mute" x-text="d.site.footer.about"></p>
+            <div class="mt-5 flex gap-2">
+              <template x-for="s in d.site.socials" :key="s.label">
+                <a :href="s.href" target="_blank" rel="noopener" :aria-label="s.label" class="grid size-10 place-items-center rounded-full border border-white/10 text-white/70 transition hover:border-lime hover:text-lime" x-html="icon(s.icon,'size-4')"></a>
+              </template>
+            </div>
+          </div>
+          <template x-for="col in d.site.footer.columns" :key="col.title">
+            <div>
+              <h4 class="text-sm font-medium" x-text="col.title"></h4>
+              <ul class="mt-4 space-y-3 text-sm text-mute">
+                <template x-for="l in col.links" :key="l.label"><li><a :href="l.href" class="transition hover:text-lime" x-text="l.label"></a></li></template>
+              </ul>
+            </div>
+          </template>
+          <div>
+            <h4 class="text-sm font-medium">Get in touch</h4>
+            <ul class="mt-4 space-y-3 text-sm text-mute">
+              <li><a :href="'mailto:'+d.site.contact.email" class="transition hover:text-lime" x-text="d.site.contact.email"></a></li>
+              <li x-text="d.site.contact.phone"></li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-white/10">
+          <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-6 text-sm text-mute md:flex-row md:px-8">
+            <p>© <span x-text="new Date().getFullYear()"></span> <span x-text="d.site.brand.name"></span>. All rights reserved.</p>
+            <ul class="flex gap-5"><template x-for="l in d.site.footer.legal" :key="l.label"><li><a :href="l.href" class="hover:text-white" x-text="l.label"></a></li></template></ul>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </template>
+
+  <noscript><p style="padding:2rem;text-align:center">Please enable JavaScript to view this site.</p></noscript>
+</body>
+</html>

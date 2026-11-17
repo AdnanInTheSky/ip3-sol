@@ -1,0 +1,9 @@
+[
+  { "q": "How much does a project cost?", "a": "It depends on scope and complexity. After a free discovery call we send a fixed-scope quote with a clear breakdown, so you know the cost before we start. Typical MVPs take 6–12 weeks." },
+  { "q": "Do you work with startups or only established companies?", "a": "Both. We help early-stage founders validate ideas with lean MVPs and support established businesses with larger platforms, integrations and automation." },
+  { "q": "Who owns the code and the design?", "a": "You do. On final payment, all source code, design files and documentation are transferred to you. We can also work inside your own repositories from day one." },
+  { "q": "Can you take over or improve an existing product?", "a": "Yes. We start with a short technical audit of your code, infrastructure and UX, then propose a prioritized plan to stabilize, refactor or extend what's there." },
+  { "q": "How do we communicate during the project?", "a": "You get a dedicated project lead, a shared board, weekly demos and a Slack or WhatsApp channel — whichever your team prefers. No black-box development." },
+  { "q": "Do you offer support after launch?", "a": "Every project includes 30 days of free post-launch support. After that you can move to a maintenance retainer with SLA-backed response times, monitoring and regular updates." },
+  { "q": "Which technologies do you use?", "a": "We choose the stack that fits your product — commonly React, Next.js, Node.js, Laravel, Python, Flutter, PostgreSQL and AWS — and avoid vendor lock-in wherever possible." }
+]

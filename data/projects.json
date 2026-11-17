@@ -1,0 +1,199 @@
+{
+  "categories": [
+    "All",
+    "Web App",
+    "Mobile App",
+    "E-commerce",
+    "AI & Automation",
+    "ERP"
+  ],
+  "items": [
+    {
+      "slug": "nimbus-crm",
+      "title": "Nimbus CRM",
+      "client": "Nimbus Labs",
+      "year": "2026",
+      "category": "Web App",
+      "featured": true,
+      "image": "assets/img/projects/nimbus-crm.svg",
+      "description": "A lead-management workspace that keeps pipelines, follow-ups and deals on one screen.",
+      "challenge": "Sales reps juggled five tools and lost leads between hand-offs.",
+      "solution": "A unified SaaS CRM with smart queues, email sync, role-based access and real-time reporting.",
+      "results": [
+        "38% faster lead response",
+        "Single source of truth for 40+ reps",
+        "Launched in 11 weeks"
+      ],
+      "tags": [
+        "React",
+        "Node.js",
+        "PostgreSQL"
+      ],
+      "url": ""
+    },
+    {
+      "slug": "paylane",
+      "title": "Paylane",
+      "client": "Paylane Finance",
+      "year": "2026",
+      "category": "Web App",
+      "featured": true,
+      "image": "assets/img/projects/paylane.svg",
+      "description": "A fintech dashboard for tracking balances, payouts and spending analytics in real time.",
+      "challenge": "Finance teams relied on spreadsheets and delayed bank exports.",
+      "solution": "Bank-grade dashboard with live data feeds, approval workflows and exportable reports.",
+      "results": [
+        "60% less manual reconciliation",
+        "PCI-aligned architecture",
+        "Sub-second chart rendering"
+      ],
+      "tags": [
+        "Next.js",
+        "TypeScript",
+        "AWS"
+      ],
+      "url": ""
+    },
+    {
+      "slug": "freshcart",
+      "title": "FreshCart",
+      "client": "FreshCart Grocers",
+      "year": "2025",
+      "category": "E-commerce",
+      "featured": true,
+      "image": "assets/img/projects/freshcart.svg",
+      "description": "An online grocery store with slot-based delivery, subscriptions and a lightning-fast checkout.",
+      "challenge": "Low mobile conversion and abandoned carts on the legacy store.",
+      "solution": "A headless storefront with one-page checkout, saved baskets and inventory-aware delivery slots.",
+      "results": [
+        "2.1x mobile conversion",
+        "27% higher repeat orders",
+        "Lighthouse score 96+"
+      ],
+      "tags": [
+        "Next.js",
+        "Stripe",
+        "Headless CMS"
+      ],
+      "url": ""
+    },
+    {
+      "slug": "mediq",
+      "title": "MediQ",
+      "client": "MediQ Health",
+      "year": "2025",
+      "category": "Mobile App",
+      "featured": true,
+      "image": "assets/img/projects/mediq.svg",
+      "description": "A patient app for booking appointments, video consults and secure prescriptions.",
+      "challenge": "Clinics lost patients to long phone queues and no-shows.",
+      "solution": "Cross-platform app with smart scheduling, reminders and encrypted teleconsultation.",
+      "results": [
+        "45% fewer no-shows",
+        "4.8★ app-store rating",
+        "HIPAA-ready data handling"
+      ],
+      "tags": [
+        "Flutter",
+        "Firebase",
+        "WebRTC"
+      ],
+      "url": ""
+    },
+    {
+      "slug": "logitrack",
+      "title": "LogiTrack ERP",
+      "client": "Meridian Logistics",
+      "year": "2025",
+      "category": "ERP",
+      "featured": true,
+      "image": "assets/img/projects/logitrack.svg",
+      "description": "An ERP that unifies fleet, warehouse, billing and reporting for a regional carrier.",
+      "challenge": "Disconnected systems meant late invoices and no real-time fleet visibility.",
+      "solution": "Modular ERP with live GPS tracking, automated invoicing and executive dashboards.",
+      "results": [
+        "Invoices out 5 days sooner",
+        "18% lower fuel cost",
+        "300+ vehicles tracked"
+      ],
+      "tags": [
+        "Laravel",
+        "Vue",
+        "MySQL"
+      ],
+      "url": ""
+    },
+    {
+      "slug": "auralis-ai",
+      "title": "Auralis Assistant",
+      "client": "Auralis Retail",
+      "year": "2026",
+      "category": "AI & Automation",
+      "featured": true,
+      "image": "assets/img/projects/auralis-ai.svg",
+      "description": "An AI support assistant that resolves common customer questions and hands off the rest.",
+      "challenge": "Support tickets doubled in a year with no budget for new agents.",
+      "solution": "An LLM-powered assistant trained on the help center, wired into orders and the ticketing system.",
+      "results": [
+        "64% tickets auto-resolved",
+        "24/7 multilingual coverage",
+        "CSAT up 12 points"
+      ],
+      "tags": [
+        "Python",
+        "OpenAI",
+        "RAG"
+      ],
+      "url": ""
+    },
+    {
+      "slug": "stayloop",
+      "title": "Stayloop",
+      "client": "Stayloop Travel",
+      "year": "2025",
+      "category": "Web App",
+      "featured": false,
+      "image": "assets/img/projects/stayloop.svg",
+      "description": "A travel booking platform with live availability, maps and flexible itineraries.",
+      "challenge": "Slow search and unclear pricing were hurting bookings.",
+      "solution": "Fast faceted search, transparent pricing and a mobile-first booking flow.",
+      "results": [
+        "52% faster search",
+        "31% more completed bookings"
+      ],
+      "tags": [
+        "Vue",
+        "Node.js",
+        "Mapbox"
+      ],
+      "url": ""
+    },
+    {
+      "slug": "brightpath",
+      "title": "BrightPath Academy",
+      "client": "BrightPath Education",
+      "year": "2025",
+      "category": "Mobile App",
+      "featured": false,
+      "image": "assets/img/projects/brightpath.svg",
+      "description": "A learning app with live classes, quizzes and progress tracking for K-12 students.",
+      "challenge": "Students dropped off from long, passive video lessons.",
+      "solution": "Bite-sized lessons, gamified streaks and a teacher dashboard for real-time insights.",
+      "results": [
+        "3x weekly active learners",
+        "89% course completion"
+      ],
+      "tags": [
+        "React Native",
+        "Supabase"
+      ],
+      "url": ""
+    }
+  ],
+  "cta": {
+    "title": "Have a project in mind?",
+    "text": "We'd love to hear about it. Share your idea and get a free estimate within one business day.",
+    "label": "Start a project",
+    "href": "#contact"
+  }
+}

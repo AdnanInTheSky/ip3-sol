@@ -1,0 +1,26 @@
+[
+  {
+    "quote": "IP3 took our messy spreadsheet process and turned it into a platform our whole sales team enjoys using. Communication was clear at every step.",
+    "name": "Sarah Collins",
+    "role": "COO, Nimbus Labs",
+    "rating": 5
+  },
+  {
+    "quote": "They delivered the MVP in under three months and were honest about trade-offs. It felt like having an in-house team, minus the hiring headache.",
+    "name": "Daniel Okafor",
+    "role": "Founder, Paylane Finance",
+    "rating": 5
+  },
+  {
+    "quote": "Our mobile conversion more than doubled after the redesign. The attention to detail in both UX and performance was outstanding.",
+    "name": "Priya Menon",
+    "role": "Head of Digital, FreshCart",
+    "rating": 5
+  },
+  {
+    "quote": "The AI assistant now handles most of our routine tickets. Our agents finally have time for the conversations that matter.",
+    "name": "Marco Rinaldi",
+    "role": "Support Director, Auralis Retail",
+    "rating": 5
+  }
+]

@@ -1,0 +1,142 @@
+{
+  "brand": {
+    "name": "IP3 Solutions",
+    "short": "IP3",
+    "tagline": "Software, design & automation for ambitious businesses",
+    "logo": "assets/img/logo.svg"
+  },
+  "meta": {
+    "title": "IP3 Solutions — Custom Software, Web & Mobile Apps, AI Automation",
+    "description": "IP3 Solutions is an IT firm that designs, builds and supports custom software, web and mobile apps, cloud systems and AI automation for growing businesses."
+  },
+  "nav": [
+    { "label": "Services", "href": "#services" },
+    { "label": "Our Work", "href": "#work" },
+    { "label": "Process", "href": "#process" },
+    { "label": "Why IP3", "href": "#why" },
+    { "label": "Engagement", "href": "#engagement" },
+    { "label": "FAQ", "href": "#faq" }
+  ],
+  "navCta": { "label": "Start a project", "href": "#contact" },
+  "hero": {
+    "eyebrow": "IT solutions firm · Built to scale",
+    "titleBefore": "We build software that",
+    "titleHighlight": "moves your business",
+    "titleAfter": "forward.",
+    "subtitle": "IP3 Solutions is a full-service IT company. We design, engineer and support web platforms, mobile apps, cloud infrastructure and AI automation — from the first sketch to long-term support.",
+    "primaryCta": { "label": "Start a project", "href": "#contact" },
+    "secondaryCta": { "label": "See our work", "href": "#work" },
+    "badges": ["Free discovery call", "Fixed-scope quotes", "Dedicated project lead"],
+    "panel": {
+      "title": "Live project overview",
+      "status": "All systems operational",
+      "metrics": [
+        { "label": "Uptime", "value": "99.98%", "delta": "+0.02%" },
+        { "label": "Release velocity", "value": "2.4x", "delta": "+38%" },
+        { "label": "Load time", "value": "0.9s", "delta": "-41%" }
+      ],
+      "bars": [38, 52, 44, 66, 58, 79, 71, 92, 84, 100],
+      "pipeline": [
+        { "label": "Design approved", "done": true },
+        { "label": "API & database", "done": true },
+        { "label": "QA & security review", "done": true },
+        { "label": "Production deploy", "done": false }
+      ],
+      "chips": [
+        { "icon": "rocket", "text": "Deployed to production" },
+        { "icon": "shield", "text": "Security audit passed" }
+      ]
+    }
+  },
+  "sections": {
+    "tech": { "label": "Technologies we ship with" },
+    "services": {
+      "eyebrow": "What we offer",
+      "title": "Everything you need to design, build and run great software.",
+      "subtitle": "One accountable team across strategy, design, engineering and support — so nothing falls between the cracks."
+    },
+    "stats": {
+      "eyebrow": "By the numbers",
+      "title": "Results that speak louder than pitch decks."
+    },
+    "work": {
+      "eyebrow": "Previous work",
+      "title": "A selection of products we've shipped.",
+      "subtitle": "From scrappy MVPs to enterprise platforms. Many of our engagements are under NDA — these are the ones we can talk about."
+    },
+    "process": {
+      "eyebrow": "How we work",
+      "title": "A clear process. No surprises.",
+      "subtitle": "Transparent milestones, weekly demos and one point of contact from kickoff to launch."
+    },
+    "why": {
+      "eyebrow": "Why IP3",
+      "title": "Better is within reach.",
+      "subtitle": "How working with IP3 compares to the usual alternatives."
+    },
+    "engagement": {
+      "eyebrow": "Engagement models",
+      "title": "Flexible ways to work together.",
+      "subtitle": "Pick the model that fits your stage, budget and timeline. Switch any time."
+    },
+    "testimonials": {
+      "eyebrow": "Client feedback",
+      "title": "What our clients say."
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "Questions? We've got answers."
+    },
+    "contact": {
+      "eyebrow": "Let's talk",
+      "title": "Tell us about your project.",
+      "subtitle": "Share a few details and we'll reply within one business day with next steps and a free estimate."
+    }
+  },
+  "form": {
+    "budgets": ["Under $5k", "$5k – $15k", "$15k – $50k", "$50k+", "Not sure yet"],
+    "services": ["Custom software", "Web / mobile app", "UI/UX design", "Cloud & DevOps", "AI & automation", "IT consulting & support"],
+    "mailTo": "hello@ip3solutions.com",
+    "subjectPrefix": "New project enquiry — "
+  },
+  "contact": {
+    "email": "hello@ip3solutions.com",
+    "phone": "+880 1700-000000",
+    "whatsapp": "https://wa.me/8801700000000",
+    "address": "Dhaka, Bangladesh · Working with clients worldwide",
+    "hours": "Sun – Thu · 9:00 – 18:00 (GMT+6)"
+  },
+  "socials": [
+    { "label": "LinkedIn", "icon": "linkedin", "href": "#" },
+    { "label": "GitHub", "icon": "github", "href": "#" },
+    { "label": "Facebook", "icon": "facebook", "href": "#" },
+    { "label": "WhatsApp", "icon": "message", "href": "https://wa.me/8801700000000" }
+  ],
+  "footer": {
+    "about": "IP3 Solutions is an IT firm helping businesses turn ideas into reliable, scalable digital products.",
+    "columns": [
+      {
+        "title": "Company",
+        "links": [
+          { "label": "Services", "href": "#services" },
+          { "label": "Our Work", "href": "#work" },
+          { "label": "Process", "href": "#process" },
+          { "label": "Contact", "href": "#contact" }
+        ]
+      },
+      {
+        "title": "Services",
+        "links": [
+          { "label": "Custom Software", "href": "#services" },
+          { "label": "Web & Mobile Apps", "href": "#services" },
+          { "label": "UI/UX Design", "href": "#services" },
+          { "label": "AI & Automation", "href": "#services" }
+        ]
+      }
+    ],
+    "legal": [
+      { "label": "Privacy Policy", "href": "#" },
+      { "label": "Terms", "href": "#" }
+    ]
+  }
+}

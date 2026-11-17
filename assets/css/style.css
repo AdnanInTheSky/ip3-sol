@@ -1,0 +1,95 @@
+/* IP3 Solutions — custom CSS (Tailwind handles the rest) */
+@layer theme, base, components, utilities;
+:root { --lime: #cffe25; }
+[x-cloak] { display: none !important; }
+html { scroll-behavior: smooth; }
+body { overflow-x: hidden; }
+
+@layer components {
+/* Reusable component classes ------------------------------------------ */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-size: .8rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--lime);
+}
+.eyebrow::before { content: ""; width: 1.5rem; height: 1px; background: currentColor; }
+
+.h2 {
+  font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
+  font-size: clamp(2rem, 4.2vw, 3.25rem); line-height: 1.08;
+  font-weight: 600; letter-spacing: -.03em;
+}
+
+.btn-lime, .btn-ghost {
+  display: inline-flex; align-items: center; gap: .5rem;
+  border-radius: 9999px; padding: .65rem 1.25rem;
+  font-size: .9rem; font-weight: 600; transition: all .25s ease; white-space: nowrap;
+}
+.btn-lime { background: var(--lime); color: #000; }
+.btn-lime:hover { background: #fff; box-shadow: 0 0 0 6px rgba(207,254,37,.18); }
+.btn-ghost { border: 1px solid rgba(255,255,255,.15); color: #fff; }
+.btn-ghost:hover { border-color: var(--lime); color: var(--lime); }
+.btn-lg { padding: .95rem 1.75rem; font-size: 1rem; }
+
+.card {
+  border-radius: 1.5rem; border: 1px solid rgba(255,255,255,.09);
+  background: linear-gradient(180deg, #14141b, #101016);
+  transition: border-color .3s, transform .3s, box-shadow .3s;
+}
+.card:hover { border-color: rgba(207,254,37,.45); transform: translateY(-4px); box-shadow: 0 20px 50px -20px rgba(207,254,37,.18); }
+
+/* Form fields */
+.field { display: flex; flex-direction: column; gap: .5rem; }
+.field > span { font-size: .8rem; color: #a1a1ad; }
+.field input, .field select, .field textarea {
+  width: 100%; border-radius: .9rem; border: 1px solid rgba(255,255,255,.12);
+  background: #14141b; padding: .85rem 1rem; color: #fff; font: inherit; font-size: .95rem;
+  transition: border-color .2s, box-shadow .2s;
+}
+.field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,.3); }
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: none; border-color: var(--lime); box-shadow: 0 0 0 4px rgba(207,254,37,.12);
+}
+.field select option { background: #14141b; }
+
+}
+
+/* Backgrounds ---------------------------------------------------------- */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 20%, transparent 75%);
+}
+.glow { background: radial-gradient(circle, rgba(207,254,37,.16), transparent 62%); filter: blur(20px); }
+
+/* Scroll reveal (x-reveal directive) ---------------------------------- */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+.reveal.is-visible { opacity: 1; transform: none; }
+
+/* Marquee --------------------------------------------------------------- */
+.marquee { animation: marquee 38s linear infinite; }
+.marquee-mask:hover .marquee { animation-play-state: paused; }
+.marquee-mask { mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* Hero panel ------------------------------------------------------------ */
+.bar { height: 0; animation: grow .9s cubic-bezier(.2,.7,.2,1) forwards; animation-delay: calc(var(--i) * 70ms + 400ms); }
+@keyframes grow { to { height: var(--h); } }
+.float { animation: float 6s ease-in-out infinite; }
+@keyframes float { 50% { transform: translateY(-10px); } }
+
+/* FAQ accordion --------------------------------------------------------- */
+.acc { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s ease; }
+.acc > div { overflow: hidden; }
+.acc.open { grid-template-rows: 1fr; }
+
+/* Accessibility --------------------------------------------------------- */
+:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  .reveal { opacity: 1; transform: none; }
+  .bar { height: var(--h); }
+}

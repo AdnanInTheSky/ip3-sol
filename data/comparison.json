@@ -1,0 +1,11 @@
+{
+  "columns": ["IP3 Solutions", "Freelancers", "Large agencies"],
+  "rows": [
+    { "label": "Design & development", "values": [{ "ok": true, "text": "Strategy, design, engineering and QA under one roof" }, { "ok": false, "text": "Usually one skill — you coordinate the rest" }, { "ok": true, "text": "Full service, but layered with account managers" }] },
+    { "label": "Project management", "values": [{ "ok": true, "text": "Dedicated lead and weekly demos" }, { "ok": false, "text": "You manage the work yourself" }, { "ok": true, "text": "Included, often at a premium" }] },
+    { "label": "Speed & flexibility", "values": [{ "ok": true, "text": "Lean team that adapts quickly" }, { "ok": true, "text": "Fast to start, hard to scale" }, { "ok": false, "text": "Slow approvals and rigid contracts" }] },
+    { "label": "Cost efficiency", "values": [{ "ok": true, "text": "Transparent, fixed-scope pricing" }, { "ok": true, "text": "Low rates, hidden rework risk" }, { "ok": false, "text": "High overheads passed to you" }] },
+    { "label": "Availability & continuity", "values": [{ "ok": true, "text": "A team — no single point of failure" }, { "ok": false, "text": "Depends on one person's schedule" }, { "ok": true, "text": "Large bench, but rotating staff" }] },
+    { "label": "Ideal for", "values": [{ "ok": true, "text": "Startups & SMEs wanting a long-term tech partner" }, { "ok": true, "text": "Small one-off tasks" }, { "ok": true, "text": "Enterprise programs with big budgets" }] }
+  ]
+}
